@@ -11,7 +11,7 @@ security:
         our_db_provider:
             entity:
                 class: AppBundle:User
-                property: username
+                property: email
 
     firewalls:
         # disables authentication for assets and the profiler, adapt it according to your needs
@@ -26,6 +26,9 @@ security:
             # https://symfony.com/doc/current/security.html#a-configuring-how-your-users-will-authenticate
             #http_basic: ~
             provider: our_db_provider
+            guard:
+                authenticators:
+                    - AppBundle\Security\FormLoginAuthenticator
 
             # https://symfony.com/doc/current/security/form_login_setup.html
             form_login:
