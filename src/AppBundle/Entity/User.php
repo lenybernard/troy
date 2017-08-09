@@ -2,14 +2,20 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Gedmo\Timestampable\Traits\TimestampableEntity;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Table(name="users")
  * @ORM\Entity
+ * @UniqueEntity(fields="email", message="Email already taken")
  */
 class User implements UserInterface, \Serializable
 {
+    use TimestampableEntity;
+
     /**
      * @ORM\Column(type="integer")
      * @ORM\Id
