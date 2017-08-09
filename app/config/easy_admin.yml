@@ -1,4 +1,3 @@
-easy_admin:
-    entities:
-        - AppBundle\Entity\SharedResource
-        - AppBundle\Entity\User
+imports:
+    - { resource: easy_admin_entities/user.yml }
+    - { resource: easy_admin_entities/shared_resource.yml }

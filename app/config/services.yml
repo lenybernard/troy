@@ -38,3 +38,8 @@ services:
         class: AppBundle\Twig\TwigExtension
         public: false
         arguments: ["%app.giphy.api_key%"]
+
+    AppBundle\EventListener\UserPasswordEncoderSubscriber:
+        class: AppBundle\EventListener\UserPasswordEncoderSubscriber
+        tags:
+            - { name: doctrine.event_subscriber, connection: default }

@@ -24,9 +24,14 @@ class User implements UserInterface, \Serializable
     private $id;
 
     /**
-     * @ORM\Column(type="string", length=25, unique=true)
+     * @ORM\Column(type="string", length=25, unique=true, nullable=true)
      */
     private $username;
+
+    /**
+     * @Assert\Length(max=4096)
+     */
+    private $plainPassword = null;
 
     /**
      * @ORM\Column(type="string", length=64)
@@ -93,6 +98,15 @@ class User implements UserInterface, \Serializable
     }
 
     /**
+     * @return string|null
+     */
+    public function getPlainPassword()
+    {
+        return $this->plainPassword;
+    }
+
+
+    /**
      * @return array
      */
     public function getRoles()
@@ -134,12 +148,27 @@ class User implements UserInterface, \Serializable
     }
 
     /**
+     * @param string $plainPassword
+     *
+     * @return User
+     */
+    public function setPlainPassword($plainPassword)
+    {
+        $this->plainPassword = $plainPassword;
+        //just update password to force persistence and event to wake up
+        $this->password = $plainPassword;
+
+        return $this;
+    }
+
+    /**
      * @param mixed $email
      * @return User
      */
     public function setEmail($email)
     {
         $this->email = $email;
+        $this->username = $email;
 
         return $this;
     }

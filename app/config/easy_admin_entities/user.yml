@@ -1,0 +1,24 @@
+easy_admin:
+    entities:
+        User:
+            class: AppBundle\Entity\User
+            label: app.menu.users
+            list:
+                fields:
+                    - { property: 'id', label: '#' }
+                    - { property: 'email', label: 'admin.users.email' }
+                    - { property: 'enabled', label: 'admin.users.enabled' }
+            edit:
+                fields:
+                    - { property: 'email', type: 'email', label: 'admin.users.email' }
+                    - { property: 'plainPassword', type: 'password', label: 'admin.users.password' }
+                    - { property: 'roles', label: 'admin.users.isActive' }
+            new:
+                fields:
+                    - { property: 'email', type: 'email', label: 'admin.users.email' }
+                    - { property: 'plainPassword', type: 'password', label: 'admin.users.password' }
+                    - { property: 'roles', label: 'admin.users.isActive' }
+            new:
+                title: 'admin.users.new'
+            edit:
+                title: 'admin.users.edit'
