@@ -1,3 +1,4 @@
 easy_admin:
     entities:
         - AppBundle\Entity\SharedResource
+        - AppBundle\Entity\User
