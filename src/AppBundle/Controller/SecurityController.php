@@ -3,6 +3,9 @@ namespace AppBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Component\HttpFoundation\RedirectResponse;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 
 class SecurityController extends Controller
@@ -25,4 +28,20 @@ class SecurityController extends Controller
             'error'         => $error,
         ));
     }
+
+    /**
+     * @Route("/logout", name="logout")
+     * @param TokenStorageInterface $tokenStorage
+     * @param Request $request
+     * @return RedirectResponse
+     */
+    public function logoutAction(TokenStorageInterface $tokenStorage, Request $request)
+    {
+        $tokenStorage->setToken(null);
+        $request->getSession()->invalidate();
+        $request->getSession()->getFlashBag()->add('notice', 'Good bye 😢');
+
+        return $this->redirect($this->generateUrl('homepage'));
+    }
+
 }
