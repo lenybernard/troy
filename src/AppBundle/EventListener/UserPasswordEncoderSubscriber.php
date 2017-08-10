@@ -4,6 +4,7 @@ namespace AppBundle\EventListener;
 use AppBundle\Entity\User;
 use Doctrine\Common\EventSubscriber;
 use Doctrine\Common\Persistence\Event\LifecycleEventArgs;
+use Doctrine\ORM\Events;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
 class UserPasswordEncoderSubscriber implements EventSubscriber
@@ -21,8 +22,8 @@ class UserPasswordEncoderSubscriber implements EventSubscriber
     public function getSubscribedEvents()
     {
         return [
-            'prePersist',
-            'preUpdate',
+            Events::prePersist,
+            Events::preUpdate,
         ];
     }
 
