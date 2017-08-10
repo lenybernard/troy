@@ -1,0 +1,18 @@
+{% extends "::base.html.twig" %}
+
+{% block title %}Troy - Liste des resources partagées{% endblock %}
+
+{% block content %}
+    <div>
+        <a href="{{ path('app_sharedresource_new') }}">{{ 'app.shared_resource.action.new'|trans }}</a>
+    </div>
+    {% if sharedResources|length %}
+        {% for resource in sharedResources %}
+            <a href="{{ resource.url }}">{{ resource.title }}</a>
+            <small>par {{ resource.author }}</small>
+        {% endfor %}
+    {% else %}
+        <div>{{ 'app.shared_resource.index.no_results'|trans }}</div>
+    {% endif %}
+
+{% endblock %}
