@@ -7,10 +7,16 @@
         <a href="{{ path('app_sharedresource_new') }}">{{ 'app.shared_resource.action.new'|trans }}</a>
     </div>
     {% if sharedResources|length %}
-        {% for resource in sharedResources %}
-            <a href="{{ resource.url }}">{{ resource.title }}</a>
-            <small>par {{ resource.author }}</small>
-        {% endfor %}
+        <dl>
+            {% for resource in sharedResources %}
+                <dt>
+                    <a href="{{ resource.url }}">{{ resource.title }}</a>
+                </dt>
+                <dd>
+                    <small>par {{ resource.author }}</small>
+                </dd>
+            {% endfor %}
+        </dl>
     {% else %}
         <div>{{ 'app.shared_resource.index.no_results'|trans }}</div>
     {% endif %}
