@@ -4,6 +4,7 @@ namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Timestampable\Traits\TimestampableEntity;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * SharedResource
@@ -26,7 +27,7 @@ class SharedResource
 
     /**
      * @var string
-     *
+     * @Assert\NotBlank()
      * @ORM\Column(name="title", type="string", length=255)
      */
     private $title;
@@ -34,6 +35,13 @@ class SharedResource
     /**
      * @var string
      *
+     * @Assert\Url()
+     *
+     * @Assert\Regex(
+     *     pattern="/facebook\.com/",
+     *     match=false,
+     *     message="app.shared_resource.validator.url.dontfacebook"
+     * )
      * @ORM\Column(name="url", type="string", length=255)
      */
     private $url;

@@ -3,6 +3,7 @@
 namespace AppBundle\Form;
 
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 use Symfony\Component\Form\Extension\Core\Type\UrlType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -17,7 +18,7 @@ class SharedResourceType extends AbstractType
         $builder
             ->add('title')
             ->add('url', UrlType::class)
-            ->add('author');
+            ->add('author', HiddenType::class);
     }
     
     /**
