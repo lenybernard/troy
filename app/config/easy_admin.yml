@@ -1,3 +1,2 @@
 imports:
-    - { resource: easy_admin_entities/user.yml }
-    - { resource: easy_admin_entities/shared_resource.yml }    - { resource: easy_admin_entities/* }
+    - { resource: easy_admin_entities/* }
