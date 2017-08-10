@@ -42,4 +42,10 @@ services:
     AppBundle\EventListener\UserPasswordEncoderSubscriber:
         class: AppBundle\EventListener\UserPasswordEncoderSubscriber
         tags:
-            - { name: doctrine.event_subscriber, connection: default }
+            - { name: doctrine.event_subscriber }
+
+
+    AppBundle\Constraint\Validator\AvoidStressValidator:
+        class: AppBundle\Constraint\Validator\AvoidStressValidator
+        tags:
+            - { name: validator.constraint_validator, alias: avoid_stress_validator }

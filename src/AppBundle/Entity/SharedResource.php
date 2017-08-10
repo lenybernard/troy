@@ -2,6 +2,7 @@
 
 namespace AppBundle\Entity;
 
+use AppBundle\Constraint\AvoidStress;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Timestampable\Traits\TimestampableEntity;
 use Symfony\Component\Validator\Constraints as Assert;
@@ -9,6 +10,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 /**
  * SharedResource
  *
+ * @AvoidStress()
  * @ORM\Table(name="shared_resource")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\SharedResourceRepository")
  */
