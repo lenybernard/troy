@@ -1,3 +1,19 @@
 easy_admin:
     entities:
-        - AppBundle\Entity\SharedResource
+        SharedResource:
+            class: AppBundle\Entity\SharedResource
+            label: app.menu.resources
+            new:
+                fields:
+                    - { property: 'title', label: 'admin.resources.title' }
+                    - { property: 'url', label: 'admin.resources.url' }
+                    - { property: 'author', label: 'admin.resources.author' }
+            edit:
+                fields:
+                    - { property: 'title', label: 'admin.resources.title' }
+                    - { property: 'url', label: 'admin.resources.url' }
+                    - { property: 'author', label: 'admin.resources.author' }
+            new:
+                title: 'admin.resources.new'
+            edit:
+                title: 'admin.resources.edit'
